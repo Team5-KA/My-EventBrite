@@ -114,7 +114,7 @@ namespace EventCatalogAPI.Data
             modelBuilder.Entity<EventDateAndTime>(e =>
             {
                 e.ToTable("DatesAndTimes");
-                e.Property(d => d.ID)
+                e.Property(d => d.Id)
                     .IsRequired()
                     .UseHiLo("dateAndtime_hilo");
                 e.Property(d => d.Recurrence)

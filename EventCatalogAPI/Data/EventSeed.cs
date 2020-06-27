@@ -126,40 +126,48 @@ namespace EventCatalogAPI.Data
             {  
                 new EventLocation
                 {
+                    Id=1,
                     LocationType = EventLocation.LocationEnum.Venue,
                     Address = "Oroville Airport, CA"
                 },
                 new EventLocation 
                 {
+                    Id=2,
                     LocationType = EventLocation.LocationEnum.OnlineEvent
                 },
                 new EventLocation
                 {
+                    Id=3,
                     LocationType = EventLocation.LocationEnum.Venue,
                     Address = "Redmond High School audiotorium, Redmond WA"
                 },
                 new EventLocation
                 {
+                    Id=4,
                     LocationType = EventLocation.LocationEnum.Venue,
                     Address = "XYZ Restaurant, Seattle, WA"
                 },
                 new EventLocation
                 {
+                    Id=5,
                     LocationType = EventLocation.LocationEnum.Venue,
                     Address = "Dance Studio, Kent, WA"
                 },
                 new EventLocation
                 {
+                    Id=6,
                     LocationType = EventLocation.LocationEnum.Venue,
                     Address = "Pacific Nothwest Fair, Seattle, WA"
                 },
                 new EventLocation
                 {
+                    Id=7,
                     LocationType = EventLocation.LocationEnum.Venue,
                     Address = "Downtown Bellevue Park, WA"
                 },
                 new EventLocation
                 {
+                    Id=8,
                     LocationType = EventLocation.LocationEnum.Venue,
                     Address = "Community Center, Bellevue, WA"
                 }
@@ -174,51 +182,51 @@ namespace EventCatalogAPI.Data
             {
                 new EventDateAndTime
                 {
-                    StartDateTime=new DateTime(2020,7,4,21,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,4,22,0,0,DateTimeKind.Local), Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=1,StartDateTime=new DateTime(2020,7,4,21,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,4,22,0,0,DateTimeKind.Local), Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime=new DateTime(2020,7,10,17,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,10,19,0,0,DateTimeKind.Local), Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=2,StartDateTime=new DateTime(2020,7,10,17,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,10,19,0,0,DateTimeKind.Local), Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime=new DateTime(2020,6,21,11,30,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,13,30,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=3,StartDateTime=new DateTime(2020,6,21,11,30,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,13,30,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime= new DateTime(2020,6,21,17,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,17,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=4,StartDateTime= new DateTime(2020,6,21,17,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,17,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime= new DateTime(2020,6,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,18,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=5,StartDateTime= new DateTime(2020,6,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,18,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime= new DateTime(2020,7,21,12,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,21,18,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=6,StartDateTime= new DateTime(2020,7,21,12,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,21,18,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime= new DateTime(2020,8,10,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,8,10,11,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=7,StartDateTime= new DateTime(2020,8,10,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,8,10,11,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime= new DateTime(2020,9,10,11,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,9,10,12,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=8,StartDateTime= new DateTime(2020,9,10,11,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,9,10,12,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime= new DateTime(2020,9,14,16,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,9,14,18,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=9,StartDateTime= new DateTime(2020,9,14,16,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,9,14,18,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime= new DateTime(2020,10,6,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,10,6,11,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=10,StartDateTime= new DateTime(2020,10,6,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,10,6,11,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime= new DateTime(2020,7,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,21,12,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=11,StartDateTime= new DateTime(2020,7,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,21,12,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 },
                 new EventDateAndTime
                 {
-                    StartDateTime= new DateTime(2020,6,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,12,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=12,StartDateTime= new DateTime(2020,6,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,12,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
                 }
             };
 
@@ -239,7 +247,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 2,
                     LocationId = 1,
-                    DateAndTimeId = 1
+                    DateAndTimeId = 1,
 
                 },
                 new EventItem
@@ -251,7 +259,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 2,
                     LocationId = 2,
-                    DateAndTimeId = 2
+                    DateAndTimeId = 2,
 
                 },
                 new EventItem
@@ -263,7 +271,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 2,
                     LocationId = 3,
-                    DateAndTimeId = 3
+                    DateAndTimeId = 3,
                 },
 
                 new EventItem
@@ -275,7 +283,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 1,
                     LocationId = 4,
-                    DateAndTimeId = 4
+                    DateAndTimeId = 4,
                 },
                 new EventItem
                 {
@@ -286,7 +294,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 1,
                     LocationId = 5,
-                    DateAndTimeId = 5
+                    DateAndTimeId = 5,
                 },
                 new EventItem
                 {
@@ -297,7 +305,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 1,
                     LocationId = 6,
-                    DateAndTimeId = 6
+                    DateAndTimeId = 6,
                 },
                 new EventItem
                 {
@@ -308,7 +316,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 1,
                     EventSubCategoryId = 3,
                     LocationId = 7,
-                    DateAndTimeId = 7
+                    DateAndTimeId = 7,
                 },
                 new EventItem
                 {
@@ -319,7 +327,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 1,
                     EventSubCategoryId = 4,
                     LocationId = 2,
-                    DateAndTimeId = 8
+                    DateAndTimeId = 8,
                 },
                 new EventItem
                 {
@@ -330,7 +338,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 1,
                     EventSubCategoryId = 5,
                     LocationId = 2,
-                    DateAndTimeId = 9
+                    DateAndTimeId = 9,
                 },
                 new EventItem
                 {
@@ -341,7 +349,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 3,
                     EventSubCategoryId = 6,
                     LocationId = 2,
-                    DateAndTimeId = 10
+                    DateAndTimeId = 10,
                 },
                 new EventItem
                 {
@@ -352,7 +360,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 3,
                     EventSubCategoryId = 7,
                     LocationId = 2,
-                    DateAndTimeId = 11
+                    DateAndTimeId = 11,
                 },
                 new EventItem
                 {
@@ -363,7 +371,7 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 3,
                     EventSubCategoryId = 8,
                     LocationId = 8,
-                    DateAndTimeId = 12
+                    DateAndTimeId = 12,
                 }
             };
 

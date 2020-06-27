@@ -90,8 +90,23 @@ namespace EventCatalogAPI.Controllers
             var subCategories = await _context.EventSubCategories.ToListAsync();
             return Ok(subCategories);
         }
+        //Filter based on Location
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> EventLocations()
+        {
+            var locations = await _context.Locations.ToListAsync();
+            return Ok(locations);
+        }
 
-                
+        //Filter based on DatesAndTimes
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> EventDatesAndTimes()
+        {
+            var datesAndTimes = await _context.DatesAndTimes.ToListAsync();
+            return Ok(datesAndTimes);
+        }
         [HttpGet("[action]/type/{eventTypeId}/category/{eventCategoryId}/subCategory/{eventSubCategoryId}")]
         public async Task<IActionResult> EventItems(
             int? eventTypeId,
@@ -139,6 +154,57 @@ namespace EventCatalogAPI.Controllers
 
             return Ok(model);
         }
-        
+        [HttpGet("[action]/location/{locationId}/type/{eventTypeId}/category/{eventCategoryId}/subCategory/{eventSubCategoryId}")]
+        public async Task<IActionResult> Items(
+            int? locationId,
+            int? eventTypeId,
+            int? eventCategoryId,
+            int? eventSubCategoryId,
+            [FromQuery] int pageIndex = 0,
+            [FromQuery] int pageSize = 6
+            )
+        {
+            var query = (IQueryable<EventItem>)_context.EventItems;
+            if (locationId.HasValue)
+            {
+                query = query.Where(c => c.LocationId == locationId);
+            }
+
+            if (eventTypeId.HasValue)
+            {
+                query = query.Where(c => c.EventTypeId == eventTypeId);
+            }
+
+            if (eventCategoryId.HasValue)
+            {
+                query = query.Where(c => c.EventCategoryId == eventCategoryId);
+            }
+
+            if (eventSubCategoryId.HasValue)
+            {
+                query = query.Where(c => c.EventSubCategoryId == eventSubCategoryId);
+            }
+
+            var eventItemsCount = await query.LongCountAsync();
+
+            var eventItems = await query
+                            .OrderBy(c => c.Title)
+                            .Skip(pageIndex * pageSize)
+                            .Take(pageSize)
+                            .ToListAsync();
+
+            eventItems = ChangePictureUrl(eventItems);
+
+            var model = new PaginatedItemsViewModel<EventItem>
+            {
+                PageIndex = pageIndex,
+                PageSize = eventItems.Count,
+                Count = eventItemsCount,
+                Data = eventItems
+            };
+
+            return Ok(model);
+        }
+
     }
 }

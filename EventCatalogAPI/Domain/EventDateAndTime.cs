@@ -13,7 +13,7 @@ namespace EventCatalogAPI.Domain
             SingleEvent,
             RecurringEvent
         }
-        public int ID { get; set; }
+        public int Id { get; set; }
         public RecurrenceEnum Recurrence { get; set; }
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
