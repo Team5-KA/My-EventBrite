@@ -28,21 +28,15 @@ Here's a YouTube link showing a demo of the project:
 https://www.youtube.com/watch?v=wXy-2fKhtzA
 
 #### APIs to test:
-##### Pic controller:
-https://localhost:44397/api/pic/4
+##### 1. Pic controller: https://localhost:44397/api/pic/4
 
-##### Event Controller:
-https://localhost:44397/api/Event/eventitems?pageIndex=0&pageSize=5
-https://localhost:44397/api/Event/eventitems?pageIndex=0&pageSize=5
+##### 2. Event Controller: https://localhost:44397/api/Event/eventitems?pageIndex=0&pageSize=5
 
-##### Filter using page reference:
-https://localhost:44397/api/Event/EventLocations?pageIndex=0&pageSize=2
+##### 3. Filter using page reference: https://localhost:44397/api/Event/EventLocations?pageIndex=0&pageSize=2
 
-##### Filter using event type, category and subcategory:
-https://localhost:44397/api/Event/eventitems/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1
+##### 4. Filter using event type, category and subcategory: https://localhost:44397/api/Event/eventitems/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1
 
-##### Filter using location and event type, category, subcategory:
-https://localhost:44397/api/Event/items/location/2/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1
+##### 5. Filter using location and event type, category, subcategory: https://localhost:44397/api/Event/items/location/2/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1
 
 ## Technology Stack
 The technology stack used to build the application includes:
