@@ -48,6 +48,7 @@ https://localhost:44397/api/Event/items/location/2/type/1/category/1/subCategory
 The technology stack used to build the application includes:
 - Windows 10 Professional or better
 - Visual Studio 2019 Community Edition or better
+- C#
 - .Net Core
 - Docker Desktop
 - Nuget Packages v.3.1.5: 
