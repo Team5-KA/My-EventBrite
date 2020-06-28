@@ -3,7 +3,7 @@
 ### Table of Contents
 - [Description](#description)
 - [Requirements](#requirements)
-- [How to use](#How-to-use)
+- [How to use](#how-to-use)
 - [Technology Stack](#technology-stack)
 - [Authors](#authors)
 - [Thank you](#thank-you)
@@ -27,16 +27,24 @@ Software to be installed to run or test the application
 Here's a YouTube link showing a demo of the project:
 https://www.youtube.com/watch?v=wXy-2fKhtzA
 
-#### APIs to test:
-##### 1. Pic controller: https://localhost:44397/api/pic/4
+#### Steps
+1. Download or Clone the project from the Github and open in Visual Studio.
+2. In Visual Studio "Package Manager Console" window, use the command "Add-Migration" (give a name for the Migration e.g. Add-Migration Initial).
+3. Run using "IIS express". 
+(Caution - Re-running the application will give error because Ids will be reproduced and will not match with referenced Ids. 
+Therefore close out of the application and reopen, delete the Eventdb (if it exists) from "Sql Server Object Explorer" and the "Migration" folder (if it exists) from the Solution and follow steps 2 and 3 above.)
+4. Open the Postman App to test the API's below.
 
-##### 2. Event Controller: https://localhost:44397/api/Event/eventitems?pageIndex=0&pageSize=5
+#### APIs to test
+##### 1. [Pic controller](https://localhost:44397/api/pic/4)
 
-##### 3. Filter using page reference: https://localhost:44397/api/Event/EventLocations?pageIndex=0&pageSize=2
+##### 2. [Event Controller](https://localhost:44397/api/Event/eventitems?pageIndex=0&pageSize=5)
 
-##### 4. Filter using event type, category and subcategory: https://localhost:44397/api/Event/eventitems/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1
+##### 3. [Filter using page reference](https://localhost:44397/api/Event/EventLocations?pageIndex=0&pageSize=2)
 
-##### 5. Filter using location and event type, category, subcategory: https://localhost:44397/api/Event/items/location/2/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1
+##### 4. [Filter using event type, category and subcategory](https://localhost:44397/api/Event/eventitems/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1)
+
+##### 5. [Filter using location and event type, category, subcategory](https://localhost:44397/api/Event/items/location/2/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1)
 
 ## Technology Stack
 The technology stack used to build the application includes:
@@ -46,10 +54,10 @@ The technology stack used to build the application includes:
 - .Net Core
 - Docker Desktop
 - Nuget Packages v.3.1.5: 
-  Microsoft.EntityFrameworkCore
-  Microsoft.EntityFrameworkCore.Relational
-  Microsoft.EntityFrameworkCore.SqlServer
-  Microsoft.EntityFrameworkCore.Tools
+  - Microsoft.EntityFrameworkCore
+  - Microsoft.EntityFrameworkCore.Relational
+  - Microsoft.EntityFrameworkCore.SqlServer
+  - Microsoft.EntityFrameworkCore.Tools
 - For testing the App: Postman https://www.getpostman.com/
 
 ## Authors
