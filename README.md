@@ -11,7 +11,7 @@
 ## Description
 #### Final Product
 Our end goal is to build a web application similar to www.EventBrite.com that allows a user to organize events by creating online invitations, processing payments and track event related data. 
-It also allows users to view and/or sign up for events. We plan to use various Microservices such as Catalog and SignUp as well as cloud to store data to build the Application.
+It also allows users to view and/or sign up for events. We plan to use various Microservices such as Catalog and SignUp to build the Application. We plan to host the application on Docker containers.
 
 #### Phase 1 Current Phase
 For Assignment 3a our goal is to build a back-end Events Catalog Service with seeded test data stored on local SQL database that lets the user test API options. The output is a key-value pair in JSON format. 
@@ -58,10 +58,10 @@ The technology stack used to build the application includes:
 - For testing the App: Postman https://www.getpostman.com/
 
 ## Authors
-#### ***Tapasya Khatri *** Adarsha Kuthuru *** Hrudya Nair *** Vidhya Sambandan ***
+*** Tapasya Khatri *** Adarsha Kuthuru *** Hrudya Nair *** Vidhya Sambandan ***
 
 ## Thank You
-#### We'd like to thank our instructor, Kal and all the TA's at KalAcademy for their excellent guidance and support. 
+We'd like to thank our instructor, Kal and all the TA's at KalAcademy for their excellent guidance and support. 
 
 
 
