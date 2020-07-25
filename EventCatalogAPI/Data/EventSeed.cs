@@ -1,4 +1,4 @@
-﻿using EventCatalogAPI.Domain;
+using EventCatalogAPI.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -247,6 +247,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 2,
                     LocationId = 1,
+                    Price=10,
+                    Contact="Adarsha@gmail.com",
                     DateAndTimeId = 1,
 
                 },
@@ -259,6 +261,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 2,
                     LocationId = 2,
+                    Price=11,
+                    Contact="Vidya@gmail.com",
                     DateAndTimeId = 2,
 
                 },
@@ -271,6 +275,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 2,
                     LocationId = 3,
+                    Price=18,
+                    Contact="Tapsya@gmail.com",
                     DateAndTimeId = 3,
                 },
 
@@ -283,6 +289,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 1,
                     LocationId = 4,
+                    Price=23,
+                    Contact="Hrudya@gmail.com",
                     DateAndTimeId = 4,
                 },
                 new EventItem
@@ -294,6 +302,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 1,
                     LocationId = 5,
+                    Price=18,
+                    Contact="Adarsha@gmail.com",
                     DateAndTimeId = 5,
                 },
                 new EventItem
@@ -305,6 +315,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 2,
                     EventSubCategoryId = 1,
                     LocationId = 6,
+                    Price=20,
+                    Contact="Hrudya@gmail.com",
                     DateAndTimeId = 6,
                 },
                 new EventItem
@@ -316,6 +328,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 1,
                     EventSubCategoryId = 3,
                     LocationId = 7,
+                    Price=14,
+                    Contact="Tapsya@gmail.com",
                     DateAndTimeId = 7,
                 },
                 new EventItem
@@ -327,6 +341,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 1,
                     EventSubCategoryId = 4,
                     LocationId = 2,
+                    Price=35,
+                    Contact="Vidya@gmail.com",
                     DateAndTimeId = 8,
                 },
                 new EventItem
@@ -338,6 +354,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 1,
                     EventSubCategoryId = 5,
                     LocationId = 2,
+                    Price=25,
+                    Contact="Adarsha@gmail.com",
                     DateAndTimeId = 9,
                 },
                 new EventItem
@@ -349,6 +367,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 3,
                     EventSubCategoryId = 6,
                     LocationId = 2,
+                    Price=5,
+                    Contact="Hrudya@gmail.com",
                     DateAndTimeId = 10,
                 },
                 new EventItem
@@ -360,6 +380,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 3,
                     EventSubCategoryId = 7,
                     LocationId = 2,
+                    Price=0,
+                    Contact="Tapasya@gmail.com",
                     DateAndTimeId = 11,
                 },
                 new EventItem
@@ -371,6 +393,8 @@ namespace EventCatalogAPI.Data
                     EventCategoryId = 3,
                     EventSubCategoryId = 8,
                     LocationId = 8,
+                    Price=11,
+                    Contact="Vidya@gmail.com",
                     DateAndTimeId = 12,
                 }
             };
