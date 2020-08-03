@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace EventCatalogAPI.Domain
 {
-    public class EventType
+    public class ZipCode
     {
         public int Id { get; set; }
-        public string Type { get; set; }
+        public int Zipcode { get; set; }
     }
 }

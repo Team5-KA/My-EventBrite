@@ -7,88 +7,117 @@ using System.Threading.Tasks;
 
 namespace EventCatalogAPI.Data
 {
-    public static class EventSeed
+    public static class CatalogSeed
     {
-        public static void Seed(EventContext eventContext)
+        public static void Seed(CatalogContext catalogContext)
         {
-           //Migrate to database
+            //Migrate to database
 
-           eventContext.Database.Migrate();
+            catalogContext.Database.Migrate();
+            
+            //DatesAndTimes
 
-            if (eventContext.DatesAndTimes.Any())
+            if (catalogContext.DatesAndTimes.Any())
             {
-                eventContext.DatesAndTimes.RemoveRange(eventContext.DatesAndTimes);
-                eventContext.SaveChanges();
+                catalogContext.DatesAndTimes.RemoveRange(catalogContext.DatesAndTimes);
+                catalogContext.SaveChanges();
             }
-            if (!eventContext.DatesAndTimes.Any())
+            if (!catalogContext.DatesAndTimes.Any())
             {
-                eventContext.DatesAndTimes.AddRange(GetDatesAndTimes());
-                eventContext.SaveChanges();
-            }
-            if (eventContext.Locations.Any())
-            {
-                eventContext.Locations.RemoveRange(eventContext.Locations);
-                eventContext.SaveChanges();
-            }
-            if (!eventContext.EventTypes.Any())
-            {
-                eventContext.Locations.AddRange(GetLocations());
-                eventContext.SaveChanges();
-            }
-            if (eventContext.EventTypes.Any())
-            {
-                eventContext.EventTypes.RemoveRange(eventContext.EventTypes);
-                eventContext.SaveChanges();
-            }
-            if (!eventContext.EventTypes.Any())
-            {
-                eventContext.EventTypes.AddRange(GetEventTypes());
-                eventContext.SaveChanges();
+                catalogContext.DatesAndTimes.AddRange(GetDatesAndTimes());
+                catalogContext.SaveChanges();
             }
 
-            if (eventContext.EventCategories.Any())
+
+            //ZipCodes
+            if (catalogContext.ZipCodes.Any())
             {
-                eventContext.EventCategories.RemoveRange(eventContext.EventCategories);
-                eventContext.SaveChanges();
+                catalogContext.ZipCodes.RemoveRange(catalogContext.ZipCodes);
+                catalogContext.SaveChanges();
             }
-            if (!eventContext.EventCategories.Any())
+            if (!catalogContext.ZipCodes.Any())
             {
-                eventContext.EventCategories.AddRange(GetEventCategories());
-                eventContext.SaveChanges();
+                catalogContext.ZipCodes.AddRange(GetEventZipCodes());
+                catalogContext.SaveChanges();
             }
 
-            if (eventContext.EventSubCategories.Any())
+            // Locations
+            if (catalogContext.Locations.Any())
             {
-                eventContext.EventSubCategories.RemoveRange(eventContext.EventSubCategories);
-                eventContext.SaveChanges();
+                catalogContext.Locations.RemoveRange(catalogContext.Locations);
+                catalogContext.SaveChanges();
             }
-            if (!eventContext.EventSubCategories.Any())
+            if (!catalogContext.Locations.Any())
             {
-                eventContext.EventSubCategories.AddRange(GetEventSubCategories());
-                eventContext.SaveChanges();
+                catalogContext.Locations.AddRange(GetLocations());
+                catalogContext.SaveChanges();
             }
 
-            if (eventContext.EventItems.Any())
+            //EventTypes
+
+            if (catalogContext.EventTypes.Any())
             {
-                eventContext.EventItems.RemoveRange(eventContext.EventItems);
-                eventContext.SaveChanges();
+                catalogContext.EventTypes.RemoveRange(catalogContext.EventTypes);
+                catalogContext.SaveChanges();
             }
-            if (!eventContext.EventItems.Any())
+                
+            if (!catalogContext.EventTypes.Any())
             {
-                eventContext.EventItems.AddRange(GetEventItems());
-                eventContext.SaveChanges();
+                catalogContext.EventTypes.AddRange(GetEventTypes());
+                catalogContext.SaveChanges();
+            }
+
+            //Event Categories
+
+            if (catalogContext.EventCategories.Any())
+            {
+                catalogContext.EventCategories.RemoveRange(catalogContext.EventCategories);
+                catalogContext.SaveChanges();
+            }
+            if (!catalogContext.EventCategories.Any())
+            {
+               catalogContext.EventCategories.AddRange(GetEventCategories());
+               catalogContext.SaveChanges();
+            }
+
+            //Event Subcategories
+
+            if (catalogContext.EventSubCategories.Any())
+            {
+                catalogContext.EventSubCategories.RemoveRange(catalogContext.EventSubCategories);
+                catalogContext.SaveChanges();
+            }
+
+            if (!catalogContext.EventSubCategories.Any())
+            {
+                catalogContext.EventSubCategories.AddRange(GetEventSubCategories());
+                catalogContext.SaveChanges();
+            }
+
+            //EventItems
+
+            if (catalogContext.EventItems.Any())
+            {
+                catalogContext.EventItems.RemoveRange(catalogContext.EventItems);
+                catalogContext.SaveChanges();
+            }
+            if (!catalogContext.EventItems.Any())
+            {
+                catalogContext.EventItems.AddRange(GetEventItems());
+                catalogContext.SaveChanges();
             }
 
         }
+    
 
         //Event Types
-        private static IEnumerable<EventType> GetEventTypes()
+        private static IEnumerable<Domain.EventType> GetEventTypes()
         {
-            return new List<EventType>
+            return new List<Domain.EventType>
             {
-                new EventType { Type = "Concert or Performance" },
-                new EventType { Type = "Festival or Fair" },
-                new EventType { Type = "Health & Wellness" }
+                new Domain.EventType { Type = "Concert or Performance" },
+                new Domain.EventType { Type = "Festival or Fair" },
+                new Domain.EventType { Type = "Health & Wellness" }
             };
         }
 
@@ -118,115 +147,137 @@ namespace EventCatalogAPI.Data
                 new EventSubCategory { SubCategory = "Yoga" }
             };
         }
+        //Event Zipcodes
+        private static IEnumerable<ZipCode> GetEventZipCodes()
+        {
+            return new List<ZipCode>
+            {
+                new ZipCode { Zipcode = 0 },
+                new ZipCode { Zipcode = 95965 },
+                new ZipCode { Zipcode = 98052 },
+                new ZipCode { Zipcode = 98101 },
+                new ZipCode { Zipcode = 98035 },
+                new ZipCode { Zipcode = 98007 },
+                
+            };
+        }
 
         //Event Location
-        private static IEnumerable<EventLocation> GetLocations()
+        private static IEnumerable<Location> GetLocations()
         {
-            return new List<EventLocation>
-            {  
-                new EventLocation
+            return new List<Location>
+            {
+                new Location
                 {
                     Id=1,
-                    LocationType = EventLocation.LocationEnum.Venue,
-                    Address = "Oroville Airport, CA"
+                    LocationType = Location.LocationEnum.Venue,
+                    Address = "Oroville Airport, CA",
+                    ZipCodeId = 2
                 },
-                new EventLocation 
+                new Location 
                 {
                     Id=2,
-                    LocationType = EventLocation.LocationEnum.OnlineEvent
+                    LocationType = Location.LocationEnum.OnlineEvent,
+                    ZipCodeId = 1
                 },
-                new EventLocation
+                new Location
                 {
                     Id=3,
-                    LocationType = EventLocation.LocationEnum.Venue,
-                    Address = "Redmond High School audiotorium, Redmond WA"
+                    LocationType = Location.LocationEnum.Venue,
+                    Address = "Redmond High School audiotorium, Redmond WA",
+                    ZipCodeId = 3
                 },
-                new EventLocation
+                new Location
                 {
                     Id=4,
-                    LocationType = EventLocation.LocationEnum.Venue,
-                    Address = "XYZ Restaurant, Seattle, WA"
+                    LocationType = Location.LocationEnum.Venue,
+                    Address = "XYZ Restaurant, Seattle, WA",
+                    ZipCodeId = 4
                 },
-                new EventLocation
+                new Location
                 {
                     Id=5,
-                    LocationType = EventLocation.LocationEnum.Venue,
-                    Address = "Dance Studio, Kent, WA"
+                    LocationType = Location.LocationEnum.Venue,
+                    Address = "Dance Studio, Kent, WA",
+                    ZipCodeId = 5
                 },
-                new EventLocation
+                new Location
                 {
                     Id=6,
-                    LocationType = EventLocation.LocationEnum.Venue,
-                    Address = "Pacific Nothwest Fair, Seattle, WA"
+                    LocationType = Location.LocationEnum.Venue,
+                    Address = "Pacific Nothwest Fair, Seattle, WA",
+                    ZipCodeId = 4
                 },
-                new EventLocation
+                new Location
                 {
                     Id=7,
-                    LocationType = EventLocation.LocationEnum.Venue,
-                    Address = "Downtown Bellevue Park, WA"
+                    LocationType = Location.LocationEnum.Venue,
+                    Address = "Downtown Bellevue Park, WA",
+                    ZipCodeId = 6
                 },
-                new EventLocation
+                new Location
                 {
                     Id=8,
-                    LocationType = EventLocation.LocationEnum.Venue,
-                    Address = "Community Center, Bellevue, WA"
+                    LocationType = Location.LocationEnum.Venue,
+                    Address = "Community Center, Bellevue, WA",
+                    ZipCodeId = 6
                 }
 
             };
         }
 
         //Event Dates and Times
-        private static IEnumerable<EventDateAndTime> GetDatesAndTimes()
+        private static IEnumerable<DateAndTime> GetDatesAndTimes()
         {
-            return new List<EventDateAndTime>
+            return new List<DateAndTime>
             {
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=1,StartDateTime=new DateTime(2020,7,4,21,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,4,22,0,0,DateTimeKind.Local), Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=1,StartDateTime=new DateTime(2020,7,4,21,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,4,22,0,0,DateTimeKind.Local), Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=2,StartDateTime=new DateTime(2020,7,10,17,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,10,19,0,0,DateTimeKind.Local), Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=2,StartDateTime=new DateTime(2020,7,10,17,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,10,19,0,0,DateTimeKind.Local), Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=3,StartDateTime=new DateTime(2020,6,21,11,30,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,13,30,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=3,StartDateTime=new DateTime(2020,6,21,11,30,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,13,30,0,DateTimeKind.Local),Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=4,StartDateTime= new DateTime(2020,6,21,17,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,17,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=4,StartDateTime= new DateTime(2020,6,21,17,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,17,0,0,DateTimeKind.Local),Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=5,StartDateTime= new DateTime(2020,6,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,18,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=5,StartDateTime= new DateTime(2020,6,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,18,0,0,DateTimeKind.Local),Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=6,StartDateTime= new DateTime(2020,7,21,12,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,21,18,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=6,StartDateTime= new DateTime(2020,7,21,12,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,21,18,0,0,DateTimeKind.Local),Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=7,StartDateTime= new DateTime(2020,8,10,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,8,10,11,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=7,StartDateTime= new DateTime(2020,8,10,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,8,10,11,0,0,DateTimeKind.Local),Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=8,StartDateTime= new DateTime(2020,9,10,11,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,9,10,12,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=8,StartDateTime= new DateTime(2020,9,10,11,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,9,10,12,0,0,DateTimeKind.Local),Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=9,StartDateTime= new DateTime(2020,9,14,16,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,9,14,18,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=9,StartDateTime= new DateTime(2020,9,14,16,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,9,14,18,0,0,DateTimeKind.Local),Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=10,StartDateTime= new DateTime(2020,10,6,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,10,6,11,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=10,StartDateTime= new DateTime(2020,10,6,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,10,6,11,0,0,DateTimeKind.Local),Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=11,StartDateTime= new DateTime(2020,7,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,21,12,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=11,StartDateTime= new DateTime(2020,7,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,7,21,12,0,0,DateTimeKind.Local),Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 },
-                new EventDateAndTime
+                new DateAndTime
                 {
-                    Id=12,StartDateTime= new DateTime(2020,6,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,12,0,0,DateTimeKind.Local),Recurrence=EventDateAndTime.RecurrenceEnum.SingleEvent
+                    Id=12,StartDateTime= new DateTime(2020,6,21,10,0,0,DateTimeKind.Local), EndDateTime=new DateTime(2020,6,21,12,0,0,DateTimeKind.Local),Recurrence=DateAndTime.RecurrenceEnum.SingleEvent
                 }
             };
 
@@ -276,7 +327,7 @@ namespace EventCatalogAPI.Data
                     EventSubCategoryId = 2,
                     LocationId = 3,
                     Price=18,
-                    Contact="Tapsya@gmail.com",
+                    Contact="Tapasya@gmail.com",
                     DateAndTimeId = 3,
                 },
 
@@ -329,7 +380,7 @@ namespace EventCatalogAPI.Data
                     EventSubCategoryId = 3,
                     LocationId = 7,
                     Price=14,
-                    Contact="Tapsya@gmail.com",
+                    Contact="Tapasya@gmail.com",
                     DateAndTimeId = 7,
                 },
                 new EventItem

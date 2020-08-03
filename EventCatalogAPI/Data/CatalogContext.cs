@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace EventCatalogAPI.Data
 {
-    public class EventContext : DbContext
+    public class CatalogContext : DbContext
     {
-        public EventContext(DbContextOptions options) : base(options)
+        public CatalogContext(DbContextOptions options) : base(options)
         {
 
         }
         public DbSet<EventItem> EventItems { get; set; }
-
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<EventCategory> EventCategories { get; set; }
         public DbSet<EventSubCategory> EventSubCategories { get; set; }
-        public DbSet<EventLocation> Locations { get; set; }
-        public DbSet<EventDateAndTime> DatesAndTimes { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<ZipCode> ZipCodes { get; set; }
+        public DbSet<DateAndTime> DatesAndTimes { get; set; }
 
         //To decide what columns are must and to set other rules, PK, FKs etc.
 
@@ -40,27 +40,29 @@ namespace EventCatalogAPI.Data
                 e.Property(c => c.Description)
                     .IsRequired()
                     .HasMaxLength(1000);
-                
+               
+                e.HasOne(c => c.EventType)
+                    .WithMany()
+                    .HasForeignKey(c => c.EventTypeId);
 
-              e.HasOne(c => c.EventType)
-                  .WithMany()
-                  .HasForeignKey(c => c.EventTypeId);
+                e.HasOne(c => c.EventCategory)
+                    .WithMany()
+                    .HasForeignKey(c => c.EventCategoryId);
 
-              e.HasOne(c => c.EventCategory)
-                  .WithMany()
-                  .HasForeignKey(c => c.EventCategoryId);
-
-              e.HasOne(c => c.EventSubCategory)
-                  .WithMany()
-                  .HasForeignKey(c => c.EventSubCategoryId);
+                e.HasOne(c => c.EventSubCategory)
+                    .WithMany()
+                    .HasForeignKey(c => c.EventSubCategoryId);
 
                 e.HasOne(c => c.Location)
                     .WithMany()
                     .HasForeignKey(c => c.LocationId);
 
                 e.HasOne(c => c.DateAndTime)
-                .WithMany()
-                .HasForeignKey(c => c.DateAndTimeId);
+                    .WithMany()
+                    .HasForeignKey(c => c.DateAndTimeId);
+                //e.HasOne(c => c.ZipCode)
+                    //.WithMany()
+                   // .HasForeignKey(c => c.ZipCodeId);
 
             });
 
@@ -100,7 +102,7 @@ namespace EventCatalogAPI.Data
                     .IsRequired()
                     .HasMaxLength(100);
             });
-            modelBuilder.Entity<EventLocation>(e =>
+            modelBuilder.Entity<Location>(e =>
             {
                 e.ToTable("Locations");
                 e.Property(l => l.Id)
@@ -110,8 +112,19 @@ namespace EventCatalogAPI.Data
                 .IsRequired();
                 e.Property(l => l.Address)
                 .HasMaxLength(200);
+
             });
-            modelBuilder.Entity<EventDateAndTime>(e =>
+
+            modelBuilder.Entity<ZipCode>(e =>
+            {
+                e.ToTable("ZipCodes");
+                e.Property(z => z.Id)
+                    .IsRequired()
+                    .UseHiLo("zipcodes_hilo")
+                    .HasMaxLength(25);
+            });
+            
+            modelBuilder.Entity<DateAndTime>(e =>
             {
                 e.ToTable("DatesAndTimes");
                 e.Property(d => d.Id)

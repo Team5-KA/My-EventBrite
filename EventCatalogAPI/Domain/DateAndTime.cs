@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventCatalogAPI.Domain
 {
-    public class EventDateAndTime
+    public class DateAndTime
     {
         public enum RecurrenceEnum
         {

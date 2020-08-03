@@ -19,11 +19,12 @@ namespace EventCatalogAPI.Domain
         public EventType EventType { get; set; }
         public EventCategory EventCategory { get; set; }
         public EventSubCategory EventSubCategory { get; set; }
-        public EventLocation Location { get; set; }
-        public EventDateAndTime DateAndTime { get; set; }
+        public Location Location { get; set; }
+        //public ZipCode Zipcode { get; set; }
+        public DateAndTime DateAndTime { get; set; }
         public int DateAndTimeId { get; set; }
         public int LocationId { get; set; }
-
+        //public int ZipCodeId { get; set; }
         public int Price { get; set;}
         public string Contact { get; set; } 
 

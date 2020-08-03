@@ -15,12 +15,12 @@ namespace EventCatalogAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class EventController : ControllerBase
+    public class CatalogController : ControllerBase
     {
-        private readonly EventContext _context;
+        private readonly CatalogContext _context;
         private readonly IConfiguration _config;
 
-        public EventController(EventContext context, IConfiguration config)
+        public CatalogController(CatalogContext context, IConfiguration config)
         {
             _context = context;
             _config = config;
@@ -99,6 +99,7 @@ namespace EventCatalogAPI.Controllers
             return Ok(locations);
         }
 
+
         //Filter based on DatesAndTimes
         [HttpGet]
         [Route("[action]")]
@@ -106,6 +107,14 @@ namespace EventCatalogAPI.Controllers
         {
             var datesAndTimes = await _context.DatesAndTimes.ToListAsync();
             return Ok(datesAndTimes);
+        }
+        //Filter based on ZipCodes
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> EventZipCodes()
+        {
+            var zipCodes = await _context.ZipCodes.ToListAsync();
+            return Ok(zipCodes);
         }
         [HttpGet("[action]/type/{eventTypeId}/category/{eventCategoryId}/subCategory/{eventSubCategoryId}")]
         public async Task<IActionResult> EventItems(
@@ -154,9 +163,42 @@ namespace EventCatalogAPI.Controllers
 
             return Ok(model);
         }
-        [HttpGet("[action]/location/{locationId}/type/{eventTypeId}/category/{eventCategoryId}/subCategory/{eventSubCategoryId}")]
-        public async Task<IActionResult> Items(
-            int? locationId,
+
+        [HttpGet("[action]/zipcode/{zipcodeId}")]
+        public async Task<IActionResult> EventItems(
+            int? zipcodeId,
+            [FromQuery] int pageIndex = 0,
+            [FromQuery] int pageSize = 6
+            )
+        {
+            var query = (IQueryable<EventItem>)_context.EventItems;
+
+                query = query.Where(c => c.Location.ZipCodeId == zipcodeId);
+
+            var eventItemsCount = await query.LongCountAsync();
+
+            var eventItems = await query
+                            .OrderBy(c => c.Title)
+                            .Skip(pageIndex * pageSize)
+                            .Take(pageSize)
+                            .ToListAsync();
+
+            eventItems = ChangePictureUrl(eventItems);
+
+            var model = new PaginatedItemsViewModel<EventItem>
+            {
+                PageIndex = pageIndex,
+                PageSize = eventItems.Count,
+                Count = eventItemsCount,
+                Data = eventItems
+            };
+
+            return Ok(model);
+        }
+
+        [HttpGet("[action]/zipcode/{zipcodeId}/type/{eventTypeId}/category/{eventCategoryId}/subCategory/{eventSubCategoryId}")]
+        public async Task<IActionResult> EventItems(
+            int? zipcodeId,
             int? eventTypeId,
             int? eventCategoryId,
             int? eventSubCategoryId,
@@ -165,9 +207,9 @@ namespace EventCatalogAPI.Controllers
             )
         {
             var query = (IQueryable<EventItem>)_context.EventItems;
-            if (locationId.HasValue)
+            if (zipcodeId.HasValue)
             {
-                query = query.Where(c => c.LocationId == locationId);
+                query = query.Where(c => c.Location.ZipCodeId == zipcodeId);
             }
 
             if (eventTypeId.HasValue)

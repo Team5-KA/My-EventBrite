@@ -28,10 +28,19 @@ namespace EventCatalogAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<EventContext>(options =>
-                options.UseSqlServer(Configuration["ConnectionString"]) );
-        }
+            services.AddDbContext<CatalogContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionString"]));
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                Title = "MyEventBrite - Event catalog API",
+                Version = "v1",
+                Description = "Event catalog Microservice"
+                });
+        });
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -46,6 +55,11 @@ namespace EventCatalogAPI
 
             app.UseAuthorization();
 
+            app.UseSwagger()
+                .UseSwaggerUI(e =>
+                {
+                    e.SwaggerEndpoint("/swagger/v1/swagger.json", "EventCatalogAPI v1");
+                });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
