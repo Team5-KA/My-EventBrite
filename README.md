@@ -36,15 +36,20 @@ Therefore close out of the application and reopen, delete the Eventdb (if it exi
 4. Open the Postman App to test the API's below.
 
 #### APIs to test
+
+##### [Swagger link](https://localhost:44397/swagger/index.html)
+
 ##### 1. [Pic controller](https://localhost:44397/api/pic/4)
 
-##### 2. [Event Controller](https://localhost:44397/api/Event/eventitems?pageIndex=0&pageSize=5)
+##### 2. [Event controller](https://localhost:44397/api/Catalog/eventitems?pageIndex=0&pageSize=5)
 
-##### 3. [Filter using page reference](https://localhost:44397/api/Event/EventLocations?pageIndex=0&pageSize=2)
+##### 3. [Filter using location and page reference](https://localhost:44397/api/Catalog/EventLocations?pageIndex=0&pageSize=2)
 
-##### 4. [Filter using event type, category and subcategory](https://localhost:44397/api/Event/eventitems/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1)
+##### 4. [Filter using event type, category and subcategory](https://localhost:44397/api/Catalog/eventitems/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1)
 
-##### 5. [Filter using location and event type, category, subcategory](https://localhost:44397/api/Event/items/location/2/type/1/category/1/subCategory/4?pageIndex=0&pageSize=1)
+##### 5. [Filter using zipcode](https://localhost:44397/api/Catalog/EventItems/Zipcode/1)
+
+##### 5. [Filter using zipcode and event type, category, subcategory](https://localhost:44397/api/Catalog/EventItems/Zipcode/3/type/2/category/2/subcategory/2/)
 
 ## Technology Stack
 The technology stack used to build the application includes:
@@ -58,7 +63,9 @@ The technology stack used to build the application includes:
   - Microsoft.EntityFrameworkCore.Relational
   - Microsoft.EntityFrameworkCore.SqlServer
   - Microsoft.EntityFrameworkCore.Tools
-- For testing the App: Postman https://www.getpostman.com/
+- For testing the App: 
+  - Postman https://www.getpostman.com/
+  - Swagger https://swagger.io
 
 ## Authors
 *** Tapasya Khatri *** Adarsha Kuthuru *** Hrudya Nair *** Vidhya Sambandan ***
